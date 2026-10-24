@@ -193,7 +193,7 @@ with tab_ask:
         if res["error"]:
             st.error(res["error"])
         if res["summary"]:
-            st.success(res["summary"])
+            st.success(res["summary"].replace("$", "\\$"))
         if res["sql"]:
             with st.expander("Generated SQL", expanded=True):
                 st.code(res["sql"], language="sql")
