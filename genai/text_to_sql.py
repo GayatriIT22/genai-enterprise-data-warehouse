@@ -380,7 +380,7 @@ def ask(question: str, client=None, providers: list | None = None, use_cache: bo
         try:
             part = _answer_with(provider, question, system)
         except Exception as exc:
-            failures.append(f"{provider.name}: {type(exc).__name__}")
+            failures.append(f"{provider.name}: {type(exc).__name__} - {str(exc)[:300]}")
             continue
         result.update(part, source=provider.name, model=provider.model)
         if failures:
