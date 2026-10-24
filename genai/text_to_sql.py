@@ -196,7 +196,7 @@ class GroqProvider:
                     json={"model": model, "messages": msgs, "max_tokens": max_tokens,
                           "temperature": 0})
                 if not resp.ok:
-                    raise RuntimeError(f"{resp.status_code}: {resp.text[:300]}")
+                    raise RuntimeError(f"{resp.status_code} (key length {len(self.api_key)}, starts {self.api_key[:4]}): {resp.text[:200]}")
                 self.model = model
                 return resp.json()["choices"][0]["message"]["content"].strip()
             except Exception as exc:                 # wrong model name, rate limit, network...
