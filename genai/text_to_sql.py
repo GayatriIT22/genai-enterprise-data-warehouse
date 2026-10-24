@@ -238,8 +238,7 @@ def summarize(provider, question: str, sql: str, df: pd.DataFrame) -> str:
         f"{df.head(30).to_csv(index=False)}\n\n"
         "Answer the question in 2-3 plain sentences for a business manager. Quote the key numbers "
         "(use $ and thousands separators). Use only the data shown. Do not mention SQL.")
-    return provider.complete(None, [{"role": "user", "content": prompt}], 300)
-
+    return provider.complete(None, [{"role": "user", "content": prompt}], 1000)
 
 def local_summary(df: pd.DataFrame) -> str:
     """Used when the summary call fails or when answering offline."""
